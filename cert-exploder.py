@@ -16,7 +16,7 @@ def explode(filepath):
 	#add unique ID for each teacher
 	teachers['teacherID'] = 0
 	for row in range(len(teachers)):
-		teachers['teacherID'][row] = row #id is equivalent to row in og dataframe
+		teachers.set_value(row, 'teacherID', row) #teacherID = row in og dataframe
 	#create dataframe that records endorsements
 	endorsements = pd.DataFrame(columns = ['teacherID', 'endorsement'])
 	for row in range(len(teachers)):
