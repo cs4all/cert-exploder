@@ -24,7 +24,7 @@ def explode(filepath):
 		endor = teachers['ENDORSMENT'][row] # "endorsement" is mispelled in the dataset
 		endor = endor.split('|')
 		for e in endor:
-			df = pd.DataFrame([ID, e], columns = ['teacherID', 'endorsement'])
+			df = pd.DataFrame.from_dict({'teacherID': ID, 'endorsement': e}, orient = 'columns')
 			endorsements = endorsements.append(df)
 	#create dataframe that records certifications
 	certifications = pd.DataFrame(columns = ['teacherID', 'certification'])
