@@ -21,7 +21,7 @@ def explode(filepath):
 	endorsements = pd.DataFrame(columns = ['teacherID', 'endorsement'])
 	for row in range(len(teachers)):
 		ID = teachers['teacherID'][row]
-		endor = teachers['ENDORSMENT'][row] # "endorsement" is mispelled in the dataset
+		endor = str(teachers['ENDORSMENT'][row]) # "endorsement" is mispelled in the dataset
 		endor = endor.split('|')
 		for e in endor:
 			df = pd.DataFrame.from_dict({'teacherID': [ID], 'endorsement': [e]}, orient = 'columns')
@@ -30,8 +30,8 @@ def explode(filepath):
 	certifications = pd.DataFrame(columns = ['teacherID', 'certification'])
 	for row in range(len(teachers)):
 		ID = teachers['teacherID'][row]
-		cert = teachers['CERTIFICATION']
-		cert = endor.split('|')
+		cert = str(teachers['CERTIFICATION'])
+		cert = cert.split('|')
 		for c in cert:
 			df = pd.DataFrame([ID, c], columns = ['teacherID', 'certification'])
 			certifications = certifications.append(df)
