@@ -44,6 +44,11 @@ def explode(filepath):
 	return endorsements, certifications, teachers
 
 def main(filepath):
+	'''
+	Takes an Excel report of teachers with CS Licenses and makes a report of
+	the number of teachers with each type of certifications and reports for each
+	individual certification of the teachers that have that certification.
+	'''
 	#make a .csv with columns for each certification and number of
 	#	teachers with that certification
 	endorsements, certifications, teachers = explode(filepath)
