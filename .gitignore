@@ -1,3 +1,4 @@
 *.xlsx
 *.csv
 .ipynb_checkpoints/
+reports/
