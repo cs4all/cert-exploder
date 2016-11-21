@@ -1,4 +1,4 @@
-import pandas as pd 
+import pandas as pd
 import csv
 
 
@@ -7,9 +7,9 @@ def explode(filepath):
 	Takes an Excel report of teachers with CS licenses, de-aggragates by
 	endorsement and by certification for easier analysis.
 
-	Inputs: filename of Excel file 
+	Inputs: filename of Excel file
 
-	Returns: Dataframe 'endorsements', dataframe 'certifications', 
+	Returns: Dataframe 'endorsements', dataframe 'certifications',
 			dataframe 'teachers'
 	'''
 	teachers = pd.read_excel(filepath)
