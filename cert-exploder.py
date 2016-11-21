@@ -95,6 +95,24 @@ def main(filepath):
         twc = teachers[teachers['teacherID'].isin(IDs)]  # teachers w certification in question
         del twc['teacherID']
         twc.to_csv('reports/certifications/' + key + ".csv")
+    # make ct_endorsements analogous to ct_certifications
+    ct_endorsements = {}
+    for row in range(len(endorsements)):
+        e = endorsements['endorsement'][row]
+        ct_endorsements[e] = ct_endorsements.get(e, 0) + 1
+    with open('reports/endorsement_counts.csv', 'w') as f:
+        w = csv.writer(f)
+        w.writerow(['Endorsement', 'Count'])
+        for key in ct_endorsements:
+            w.writerow([key, ct_endorsements[key]])
+    # make a file for each endorsement of teachers with that endorsement
+    for key in ct_endorsements:
+        endor = endorsements[endorsements['endorsement'] == key]
+        IDs = list(endor.pop('teacherID'))
+        twe = teachers[teachers['teacherID'].isin(IDs)]  # teachers w certification in question
+        del twe['teacherID']
+        k = key.replace("/", "|") #so as not to be confused with a new filepath
+        twe.to_csv('reports/endorsements/' + k + ".csv")
 
 if __name__ == '__main__':
     main("Comp Sci Licenses.xlsx")
